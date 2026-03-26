@@ -32,7 +32,12 @@ export default function Login() {
         setError("Network error: Please check if the server is running on http://localhost:5000");
       } else if (err.response) {
         // Server responded with error status
-        setError(err.response.data?.message || err.response.data?.error || `Login failed: ${err.response.statusText}`);
+        setError(
+          err.response.data?.message ||
+          err.response.data?.error ||
+          err.response.data?.msg ||
+          `Login failed: ${err.response.statusText}`
+        );
       } else if (err.request) {
         // Request was made but no response received
         setError("Server is not responding. Please check if the server is running.");
